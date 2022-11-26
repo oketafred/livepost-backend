@@ -2,10 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Post;
+use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Comment>
+ * @extends Factory<Comment>
  */
 class CommentFactory extends Factory
 {
@@ -14,10 +17,12 @@ class CommentFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
-            //
+            'body' => [],
+            'user_id' => User::inRandomOrder()->first()->id,
+            'post_id' => Post::inRandomOrder()->first()->id
         ];
     }
 }
